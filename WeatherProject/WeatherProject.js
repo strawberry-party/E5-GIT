@@ -53,7 +53,7 @@ class WeatherProject extends Component{
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require('./image/cloudy.jpg')}
+          source={require('./image/sakura.jpg')}
           resizeMode='cover'
           style={styles.backdrop}>
           <View style={styles.overlay}>
