@@ -6,27 +6,49 @@
  * @flow
  */
 
+//import Room from './components/Room';
+
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+/*
+import { createStackNavigator, createAppContainer, NavigationContainer } from 'react-navigation';
+import MainScreen from './Components/MainScreen';
 
-import store from './store.js';
+const Stack = createStackNavigator({
+  Main:{
+    screen: MainScreen // MainScreen 컴포넌트를 네비게이터에 등록
+  }
+});
 
-import Room from './components/Room';
 
 class App extends Component{
   render(){
     return(
-      <View>
-        <Text>카택전에 오신것을 환영합니다</Text>
-        <Room></Room>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Text>Hello world</Text>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
+*/
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Text>Hello world</Text>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 
 
 const styles = StyleSheet.create({
@@ -34,3 +56,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
