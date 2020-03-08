@@ -1,9 +1,16 @@
 import {createStore} from 'redux';
 
-export default createStore(function(state, action){
-    if(state === undefined){
-        return {mode: "MAIN"}
+var initState = {
+    mode : 'MAIN'
+}
+
+function reducer(state=initState, action){
+    var newState = null;
+    if (action.type === 'READ'){
+        newState = {...state, mode: action.type};
+        return newState;
     }
     return state;
-}, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+}
+
+export default createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

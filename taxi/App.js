@@ -12,25 +12,24 @@ import {
   View,
   Text
 } from 'react-native';
+import { Provider, connect } from 'react-redux'
+import store from './store';
+// import RoomC from './containers/RoomC';
+import Main from './components/Main';
 
-import store from './store.js';
-
-import Room from './components/Room';
-
-class App extends Component{
+export default class App extends Component{
   render(){
     return(
-      <View>
-        <Text>카택전에 오신것을 환영합니다</Text>
-        <Room></Room>
-      </View>
+      <Provider store = {store}>
+        <Main></Main>
+      </Provider>
     );
   }
 }
+
 
 
 const styles = StyleSheet.create({
 
 });
 
-export default App;
