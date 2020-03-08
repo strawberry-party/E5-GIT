@@ -19,7 +19,7 @@ class App extends Component{
   render(){
     return(
       <View>
-        <Text>카택전</Text>
+        <Text>카택전에 오신것을 환영합니다</Text>
       </View>
     );
   }
