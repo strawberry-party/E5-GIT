@@ -6,8 +6,10 @@ var initState = {
 
 function reducer(state=initState, action){
     var newState = null;
-    
-    if (action.type === 'READ'){
+    if (action.type === 'MAIN'){
+        newState = {...state, mode: action.type};
+        return newState;
+    } else if (action.type === 'READ'){
         newState = {...state, mode: action.type};
         return newState;
     }
