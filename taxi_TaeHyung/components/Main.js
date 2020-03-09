@@ -20,12 +20,12 @@ class Main extends Component{
             } else if (this.props.mode === 'MAIN'){
                 body = 
                     <View>
-                        <Text>카택전에 오신것을 환영합니다</Text>
                         <RoomC></RoomC>
                     </View>;
             }
         return(
             <View>
+                <Text>카택전에 오신것을 환영합니다!</Text>
                 {body}
             </View>
         )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Room from '../components/Room';
+import RoomList from '../components/RoomList';
 
 export default connect(
     null,
@@ -10,4 +10,4 @@ export default connect(
         }
       }
     }
-  )(Room);
+  )(RoomList);
