@@ -7,8 +7,8 @@ export default class Room extends Component{
       return (
         <Card>
           <CardItem button onPress = {function(){
-            
-          }} onClick = {this.props.onClick}>
+            this.props.onPress('READ');
+          }.bind(this)}>
             <Text>This is button</Text>
           
           </CardItem>  

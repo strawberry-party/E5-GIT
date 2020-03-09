@@ -11,7 +11,7 @@ import {
   View,
   Text
 } from 'react-native';
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './store';
 // import RoomC from './containers/RoomC';
 import Main from './components/Main';
@@ -20,6 +20,11 @@ export default class App extends Component{
   render(){
     return(
       <Provider store = {store}>
+        {/* <View>
+          <Text>
+            hello world
+          </Text>
+        </View> */}
         <Main></Main>
       </Provider>
     );
