@@ -13,8 +13,7 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux'
 import store from './store';
-// import RoomC from './containers/RoomC';
-import Main from './components/Main';
+import Main from './Components/Main';
 
 export default class App extends Component{
   render(){
