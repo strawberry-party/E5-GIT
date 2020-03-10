@@ -8,8 +8,8 @@ class RoomList extends Component {
     var rooms = this.props.rooms;
     var cardlist = rooms.map(function(room){
       return (
-        <Card>
-          <CardItem key = {room.id} button onPress = {function(){
+        <Card key = {room.id}>
+          <CardItem button onPress = {function(){
             this.props.onPress('READ', room.id)
           }.bind(this)}>
             <Text>{room.dep} -> {room.dest}</Text>

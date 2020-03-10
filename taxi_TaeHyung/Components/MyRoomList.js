@@ -9,7 +9,7 @@ class MyRoomList extends Component {
         var myRooms = [];
         for(var i = 0; i < rooms.length; i++){
             myRooms.push(
-                <Button style = {{width: 60}}>
+                <Button key = {rooms[i].id} style = {{width: 60}}>
                     <Text>
                         {rooms[i].dest}
                     </Text>

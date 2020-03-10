@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text} from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon, Item, Form, Label, Input, Container, Header, Title, Content, Footer, FooterTab } from 'native-base';
+import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon, Item, Form, Label, Input, Container, Header, Title, Content, Footer, FooterTab, Fab } from 'native-base';
 import RoomList from './RoomList';
 import MyRoomList from './MyRoomList';
 import CreateRoom from './CreateRoom';
@@ -12,20 +12,21 @@ import Back from './Back';
 class Main extends Component {
     render() {
         var article = null;
+        var fab = null;
         var foot = null;
         if (this.props.mode === 'MAIN'){
             article = 
                 <View>
-                    <MyRoomList></MyRoomList>
-                    <RoomList></RoomList>
-                </View>;
-            foot = <CreateRoom></CreateRoom>                
+                    <MyRoomList />
+                    <RoomList />
+                </View>;     
+            fab = <CreateRoom />
         } else if (this.props.mode === 'READ'){
-            article = <Room></Room>
-            foot = <Back></Back>
+            article = <Room />
+            fab = <Back />
         } else if (this.props.mode === 'CREATE'){
-            article = <Create></Create>
-            foot = <Back></Back>
+            article = <Create />
+            fab = <Back />
         }
         return (
             <Container>
@@ -36,6 +37,7 @@ class Main extends Component {
                 </Header>
                 <Content>
                     {article}
+                    {fab}
                 </Content>
                 <Footer>
                     <FooterTab>
