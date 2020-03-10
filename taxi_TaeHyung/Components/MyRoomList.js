@@ -5,17 +5,16 @@ import { connect } from 'react-redux';
 
 class MyRoomList extends Component {
     render() {
-        var city = this.props.cities;
+        var rooms = this.props.rooms;
         var myRooms = [];
-        for(var i = 0; i < city.length; i++){
+        for(var i = 0; i < rooms.length; i++){
             myRooms.push(
-                <Card>
-                    <CardItem>
-                        <Text>
-                            {city[i]}
-                        </Text>
-                    </CardItem>
-                </Card>)
+                <Button style = {{width: 60}}>
+                    <Text>
+                        {rooms[i].dest}
+                    </Text>
+                </Button>
+            )
         }
         
         return (
@@ -29,13 +28,7 @@ class MyRoomList extends Component {
 export default connect(
     function(state) {
         return {
-            cities: state.cities
+            rooms: state.rooms
         }
     }
 )(MyRoomList);
-
-const styles = StyleSheet.create({
-    myRoom: {
-        flex: 1
-    }
-});

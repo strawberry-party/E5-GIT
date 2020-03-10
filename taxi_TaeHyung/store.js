@@ -2,7 +2,6 @@ import {createStore} from 'redux';
 
 var initState = {
     mode : 'MAIN',
-    cities : ['서울', '부산', '대구', '화성', '명왕성'],
     max_id : 5,
     selected_id : 1,
     rooms : [
@@ -21,6 +20,14 @@ function reducer(state=initState, action){
         return newState;
     } else if (action.type === 'READ'){
         newState = {...state, mode: action.type, selected_id: action.id};
+        return newState;
+    } else if (action.type === 'CREATE'){
+        newState = {...state, mode: action.type}
+        return newState;
+    } else if (action.type === 'CREATE_PROCESS'){
+        var newId = state.max_id + 1;
+        var newRooms = [...state.rooms, {id: newId, dep: action.dep, dest: action.dest}]
+        newState = {...state, mode: 'MAIN', max_id: newId, rooms: newRooms}
         return newState;
     }
     return state;
