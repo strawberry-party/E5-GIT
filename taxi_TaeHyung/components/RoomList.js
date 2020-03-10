@@ -18,9 +18,12 @@ class RoomList extends Component {
       )
     }.bind(this));
     return (
-      <ScrollView>
-        {cardlist}
-      </ScrollView>
+      <View style={styles.roomList}>
+        <Text style={{textAlign: 'center'}}>현재 개설된 방들</Text>
+        <ScrollView>
+          {cardlist}
+        </ScrollView>
+      </View>
     );
   }
 }

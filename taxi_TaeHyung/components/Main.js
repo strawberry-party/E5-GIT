@@ -16,7 +16,7 @@ class Main extends Component {
         var foot = null;
         if (this.props.mode === 'MAIN'){
             article = 
-                <View>
+                <View style={styles.container}>
                     <MyRoomList />
                     <RoomList />
                 </View>;     
@@ -37,13 +37,13 @@ class Main extends Component {
                 </Header>
                 <Content>
                     {article}
-                    {fab}
                 </Content>
                 <Footer>
                     <FooterTab>
                         {foot}
                     </FooterTab>
                 </Footer>
+                {fab}
             </Container>
         )
     }
@@ -61,6 +61,7 @@ export default connect(
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1
+        flex: 1,
+        justifyContent: 'space-between'
     }
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, version } from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { Card, CardItem, Thumbnail, Body, Left, Right, Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
@@ -18,9 +18,12 @@ class MyRoomList extends Component {
         }
         
         return (
-            <ScrollView horizontal='true'>
-                {myRooms}
-            </ScrollView>
+            <View style={styles.myRoomList} >
+                <Text style={{textAlign: 'center'}}>내 방들</Text>
+                <ScrollView horizontal>
+                    {myRooms}
+                </ScrollView>
+            </View>
         );
     }
 }
@@ -32,3 +35,10 @@ export default connect(
         }
     }
 )(MyRoomList);
+
+const styles = StyleSheet.create({
+    myRoomList: {
+        flex: 1
+    }
+  });
+  
