@@ -2,7 +2,13 @@ import {createStore} from 'redux';
 var initstate = {
     mode : 'home',
     rooms : [
-        {id: 1, writer: '태형', dep : '대전', dest : '우한'}
+        { id: 1, writer: '태형', dep : '대전', dest : '우한'},
+        { id: 2, writer: '태형', dep: '대전', dest: '우한' },
+        { id: 3, writer: '태형', dep: '대전', dest: '우한' },
+        { id: 4, writer: '태형', dep: '대전', dest: '우한' },
+        { id: 5, writer: '태형', dep: '대전', dest: '우한' },
+        { id: 6, writer: '태형', dep: '대전', dest: '우한' },
+
     ],
     maxId : 1,
 }

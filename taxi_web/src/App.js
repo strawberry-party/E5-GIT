@@ -3,33 +3,33 @@ import './App.css';
 import MyTab from './components/Tabs/MyTab/MyTab';
 import RoomTab from './components/Tabs/RoomTab/RoomTab';
 import Footer from './components/Footer/Footer';
-import {Route,} from "react-router-dom";
+import { Route, } from "react-router-dom";
 import Header from './components/Header/Header';
 import { connect } from 'react-redux';
 import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
-
-class App extends Component{
-  render(){
+import EmptyCard from './components/EmptyCard'
+class App extends Component {
+  render() {
     return (
       <div>
-        <Header />
-        <div>
-          <Route exact path="/"><RoomTab></RoomTab></Route>
-          <Route exact path="/create"><CreateRoom></CreateRoom></Route>
-          <Route exact path="/mytab"><MyTab></MyTab></Route>
-          <Route exact path="/profile"><Profile></Profile></Route>
+          <Header />
+          <EmptyCard/>
+            <Route exact path="/"><RoomTab></RoomTab></Route>
+            <Route exact path="/create"><CreateRoom></CreateRoom></Route>
+            <Route exact path="/mytab"><MyTab></MyTab></Route>
+            <Route exact path="/profile"><Profile></Profile></Route>
+          <EmptyCard />
+          <Footer />
 
-        <Footer/>
-      </div>
       </div>
     )
   }
 }
 
 export default connect(
-  function(state){
-    return{
+  function (state) {
+    return {
       mode: state.mode
     }
   }
