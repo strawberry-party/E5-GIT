@@ -20,9 +20,8 @@ class App extends Component{
           <Route exact path="/mytab"><MyTab></MyTab></Route>
           <Route exact path="/profile"><Profile></Profile></Route>
 
-          <Footer/>
-          {this.props.children}
-        </div>
+        <Footer/>
+      </div>
       </div>
     )
   }
