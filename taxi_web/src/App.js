@@ -8,31 +8,21 @@ import Header from './components/Header/Header';
 import { connect } from 'react-redux';
 import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
-import Room from './components/Room';
 
 class App extends Component{
   render(){
-    var showBody;
-    if (this.props.mode === 'create') {
-      showBody = <CreateRoom></CreateRoom>;
-    }
-    else if (this.props.mode === 'read') {
-      showBody = <Room></Room>;
-    }
     return (
       <div>
         <Header />
-      <div>
-        <Route exact path="/">
-          {showBody}
-          <RoomTab></RoomTab>
-        </Route>
-        <Route exact path="/mytab"><MyTab></MyTab></Route>
-        <Route exact path="/profile"><Profile></Profile></Route>
+        <div>
+          <Route exact path="/"><RoomTab></RoomTab></Route>
+          <Route exact path="/create"><CreateRoom></CreateRoom></Route>
+          <Route exact path="/mytab"><MyTab></MyTab></Route>
+          <Route exact path="/profile"><Profile></Profile></Route>
 
-        <Footer/>
-        {this.props.children}
-      </div>
+          <Footer/>
+          {this.props.children}
+        </div>
       </div>
     )
   }

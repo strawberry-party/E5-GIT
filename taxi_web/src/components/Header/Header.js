@@ -23,5 +23,5 @@ export default connect(
                 dispatch({type: mode});
             }
         }
-    }
-    )(Header);
+    })
+(Header);
