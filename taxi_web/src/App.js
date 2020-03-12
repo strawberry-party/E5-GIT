@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import MyTab from './components/Tabs/MyTab';
-import RoomTab from './components/Tabs/RoomTab';
+import MyTab from './components/Tabs/MyTab/MyTab';
+import RoomTab from './components/Tabs/RoomTab/RoomTab';
 import Footer from './components/Footer/Footer';
-import {
-  Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
+import {Route,} from "react-router-dom";
 import Header from './components/Header';
 import { connect } from 'react-redux';
-import Profile from './components/Profile';
-import Home from './components/Home';
+import Profile from './components/Tabs/ProfileTab/Profile';
 import CreateRoom from './components/CreateRoom';
 import Room from './components/Room';
 
@@ -21,9 +15,8 @@ class App extends Component{
     var showBody;
     if(this.props.mode === 'profile') {
       showBody = <Profile></Profile>;
-    } else if(this.props.mode === 'home') {
-      showBody = <Home></Home>;
-    } else if(this.props.mode === 'create') {
+    }
+    else if(this.props.mode === 'create') {
       showBody = <CreateRoom></CreateRoom>;
     } else if(this.props.mode === 'read') {
       showBody = <Room></Room>;
@@ -31,14 +24,18 @@ class App extends Component{
 
     return (
       <div>
+      <div>
         <Header />
         {showBody}
       </div>
       <div>
         <Route exact path="/"><RoomTab></RoomTab></Route>
         <Route exact path="/mytab"><MyTab></MyTab></Route>
+        <Route exact path="/profile"><Profile></Profile></Route>
+
         <Footer/>
         {this.props.children}
+      </div>
       </div>
     )
   }

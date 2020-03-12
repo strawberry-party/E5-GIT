@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateButton from './CreateButton';
+import CreateButton from './Tabs/RoomTab/CreateButton';
 
 class Room extends Component {
     render() {
@@ -20,7 +20,6 @@ class Room extends Component {
                 <p>작성자 : {writer}</p>
                 <p>출발지 : {dep}</p>
                 <p>목적지 : {dest}</p>
-                <CreateButton />
             </div>
         );
     }

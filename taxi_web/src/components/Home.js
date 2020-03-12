@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import CreateButton from './CreateButton';
-import RoomList from './RoomList';
+import CreateButton from './Tabs/RoomTab/CreateButton';
+import RoomList from './Tabs/RoomTab/RoomList';
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <h1>내 방 목록</h1>
-                <RoomList></RoomList>
                 <CreateButton></CreateButton>
             </div>
         );
