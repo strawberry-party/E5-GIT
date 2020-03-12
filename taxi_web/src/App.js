@@ -31,7 +31,7 @@ class App extends Component{
         <Route exact path="/profile"><Profile></Profile></Route>
 
         <Footer/>
-        {this.props.children}
+        {/* {this.props.children} */}
       </div>
       </div>
     )
