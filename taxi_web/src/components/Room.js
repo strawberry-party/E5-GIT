@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CreateButton from './Tabs/RoomTab/CreateButton';
 
 class Room extends Component {
     render() {

@@ -8,7 +8,7 @@ const MenuItem = ({ active, children, to }) => (
     </NavLink>
 )
 
-const Footer = function ({ children }) {
+const Footer = function () {
     return (
         <div>
             <div className="phantom"/>

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Profile extends Component {
+class ProfileTab extends Component {
     render() {
         return (
             <div>
-                내정보
+                내 정보 탭
             </div>
         );
     }
 }
 
-export default Profile;
+export default ProfileTab;

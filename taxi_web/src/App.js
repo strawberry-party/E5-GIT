@@ -4,32 +4,29 @@ import MyTab from './components/Tabs/MyTab/MyTab';
 import RoomTab from './components/Tabs/RoomTab/RoomTab';
 import Footer from './components/Footer/Footer';
 import {Route,} from "react-router-dom";
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import { connect } from 'react-redux';
-import Profile from './components/Tabs/ProfileTab/Profile';
+import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
 import Room from './components/Room';
 
 class App extends Component{
   render(){
     var showBody;
-    if(this.props.mode === 'profile') {
-      showBody = <Profile></Profile>;
-    }
-    else if(this.props.mode === 'create') {
+    if (this.props.mode === 'create') {
       showBody = <CreateRoom></CreateRoom>;
-    } else if(this.props.mode === 'read') {
+    }
+    else if (this.props.mode === 'read') {
       showBody = <Room></Room>;
     }
-
     return (
       <div>
-      <div>
         <Header />
-        {showBody}
-      </div>
       <div>
-        <Route exact path="/"><RoomTab></RoomTab></Route>
+        <Route exact path="/">
+          {showBody}
+          <RoomTab></RoomTab>
+        </Route>
         <Route exact path="/mytab"><MyTab></MyTab></Route>
         <Route exact path="/profile"><Profile></Profile></Route>
 
