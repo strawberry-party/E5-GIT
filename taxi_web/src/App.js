@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import MyTab from './components/Tabs/MyTab';
 import RoomTab from './components/Tabs/RoomTab';
 import Footer from './components/Footer/Footer';
@@ -10,18 +9,45 @@ import {
   Route,
   NavLink
 } from "react-router-dom";
+import Header from './components/Header';
+import { connect } from 'react-redux';
+import Profile from './components/Profile';
+import Home from './components/Home';
+import CreateRoom from './components/CreateRoom';
+import Room from './components/Room';
 
 class App extends Component{
   render(){
+    var showBody;
+    if(this.props.mode === 'profile') {
+      showBody = <Profile></Profile>;
+    } else if(this.props.mode === 'home') {
+      showBody = <Home></Home>;
+    } else if(this.props.mode === 'create') {
+      showBody = <CreateRoom></CreateRoom>;
+    } else if(this.props.mode === 'read') {
+      showBody = <Room></Room>;
+    }
+
     return (
-        <div>
-          <Route exact path="/"><RoomTab></RoomTab></Route>
-          <Route exact path="/mytab"><MyTab></MyTab></Route>
-      <Footer/>
+      <div>
+        <Header />
+        {showBody}
+      </div>
+      <div>
+        <Route exact path="/"><RoomTab></RoomTab></Route>
+        <Route exact path="/mytab"><MyTab></MyTab></Route>
+        <Footer/>
         {this.props.children}
-        </div>
+      </div>
     )
   }
 }
 
-export default App;
+export default connect(
+  function(state){
+    return{
+      mode: state.mode
+    }
+  }
+)(App);
