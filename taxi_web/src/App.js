@@ -16,16 +16,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <HeaderContainer />
-        <EmptyCard />
-        <Route exact path="/"><RoomTab></RoomTab></Route>
-        <Route exact path="/create"><CreateRoom></CreateRoom></Route>
-        <Route exact path="/mytab"><MyTab></MyTab></Route>
-        <Route exact path="/profile"><Profile></Profile></Route>
-        <Route exact path="/notice"><NoticeTab></NoticeTab></Route>
-        <EmptyCard />
-        <Footer />
-
+          <Header />
+          <EmptyCard />
+          <Route exact path="/"><RoomTab></RoomTab></Route>
+          <Route exact path="/create"><CreateRoom></CreateRoom></Route>
+          <Route exact path="/mytab"><MyTab></MyTab></Route>
+          <Route exact path="/profile"><Profile></Profile></Route>
+          <EmptyCard />
+          <Footer />
       </div>
     )
   }

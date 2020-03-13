@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 var cardStyle = {
     display: 'block',
     width: '100%',
-    height: '25vw',
+    height: '5vw'
 }
 
 export default function HiddenCard() {

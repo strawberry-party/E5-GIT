@@ -10,6 +10,7 @@ var initstate = {
         { id: 6, writer: '태형', dep: '대전', dest: '우한' },
     ],
     maxId : 1,
+    myRooms : [],
 
     notices: [
         {id:1, title: '중요공지', desc:'카택전 v0.1 런칭'}
@@ -20,9 +21,16 @@ var initstate = {
 function reducer(state=initstate, action){
     var newState;
     if (action.type === 'create_process') {
-        var newId = state.maxId + 1;
+        var currentMaxId = state.rooms.length;
+        var newId = currentMaxId + 1;
         var newRooms = [...state.rooms, {id: newId, writer: action.writer, dep: action.dep, dest: action.dest}];
         newState = {...state, mode: 'home', rooms: newRooms, maxId: newId};
+        return newState;
+    }
+    if (action.type === 'addMyRoom') {
+        var room = state.rooms[action.roomId-1];
+        var newMyRooms = [...state.myRooms, room];
+        newState = {...state, myRooms: newMyRooms};
         return newState;
     }
     return state;

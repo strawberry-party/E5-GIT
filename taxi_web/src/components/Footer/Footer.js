@@ -11,50 +11,48 @@ const useStyles = makeStyles({
     root: {
         width: '100%',
         position: 'fixed',
-        bottom:'0'
+        bottom: '0'
     },
 });
-
-
 
 export default function Footer() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     return (
-                <BottomNavigation
-                    value={value}
-                    onChange={(event, newValue) => {
-                        setValue(newValue);
-                    }}
-                    showLabels
-                    className={classes.root}
-                >
+        <BottomNavigation
+            value={value}
+            onChange={(event, newValue) => {
+                setValue(newValue);
+            }}
+            showLabels
+            className={classes.root}
+        >
 
-                    <BottomNavigationAction
-                        component={NavLink}
-                        to="/"
-                        label="방 목록"
-                        value="RoomTab"
-                        icon={<RoomTabIcon />}
-                        className={classes.content} />
-                    <BottomNavigationAction
-                        component={NavLink}
-                        to="/mytab"
-                        label="내 방"
-                        value="MyTab"
-                        icon={<MyTabIcon />}
-                        className={classes.content} />
+            <BottomNavigationAction
+                component={NavLink}
+                to="/"
+                label="방 목록"
+                value="RoomTab"
+                icon={<RoomTabIcon />}
+                className={classes.content} />
+            <BottomNavigationAction
+                component={NavLink}
+                to="/mytab"
+                label="내 방"
+                value="MyTab"
+                icon={<MyTabIcon />}
+                className={classes.content} />
 
-                    <BottomNavigationAction
-                        component={NavLink}
-                        to="/"
-                        label="설정"
-                        value="settings"
-                        icon={<SettingsIcon />}
-                        className={classes.content}
+            <BottomNavigationAction
+                component={NavLink}
+                to="/"
+                label="설정"
+                value="settings"
+                icon={<SettingsIcon />}
+                className={classes.content}
 
-                    />
-                </BottomNavigation>
+            />
+        </BottomNavigation>
     )
 }
 

@@ -5,7 +5,6 @@ import CreateButton from './CreateButton';
 const RoomTab = () => {
     return (
         <div>
-            
             <RoomList></RoomList>
             <CreateButton></CreateButton>
         </div>

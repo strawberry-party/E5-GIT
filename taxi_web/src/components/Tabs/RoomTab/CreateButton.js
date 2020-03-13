@@ -11,7 +11,7 @@ class CreateButton extends Component {
         return (
             <NavLink exact to={'create'}>
                 <MuiThemeProvider>
-                    <FloatingActionButton >
+                    <FloatingActionButton style={style}>
                         <ContentAdd />
                     </FloatingActionButton>
                 </MuiThemeProvider>
@@ -31,3 +31,12 @@ export default connect(
         }
     }
 )(CreateButton);
+
+const style = {
+    margin: 0,
+    top: 'auto',
+    right: 20,
+    bottom: 80,
+    left: 'auto',
+    position: 'fixed',
+};
