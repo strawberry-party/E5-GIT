@@ -10,9 +10,6 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -71,7 +68,6 @@ function Header(props) {
         <React.Fragment>
             <CssBaseline />
             <ElevationScroll {...props}>
-
                 <div className={classes.root}>
                     <AppBar position="sticky">
                         <Toolbar>
@@ -89,8 +85,7 @@ function Header(props) {
                                 onClick={handleMenu}
                                 color="inherit"
                                 component={NavLink} to='/profile'
-                                edge='end'
-                            >
+                                edge='end'>
                                 <AccountCircle />
                             </IconButton>
                         </Toolbar>
@@ -98,7 +93,6 @@ function Header(props) {
                 </div>
             </ElevationScroll>
         </React.Fragment>
-
     );
 }
 

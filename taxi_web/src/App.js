@@ -14,14 +14,13 @@ class App extends Component {
     return (
       <div>
           <Header />
-          <EmptyCard/>
-            <Route exact path="/"><RoomTab></RoomTab></Route>
-            <Route exact path="/create"><CreateRoom></CreateRoom></Route>
-            <Route exact path="/mytab"><MyTab></MyTab></Route>
-            <Route exact path="/profile"><Profile></Profile></Route>
+          <EmptyCard />
+          <Route exact path="/"><RoomTab></RoomTab></Route>
+          <Route exact path="/create"><CreateRoom></CreateRoom></Route>
+          <Route exact path="/mytab"><MyTab></MyTab></Route>
+          <Route exact path="/profile"><Profile></Profile></Route>
           <EmptyCard />
           <Footer />
-
       </div>
     )
   }
