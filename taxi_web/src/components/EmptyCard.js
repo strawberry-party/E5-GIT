@@ -10,9 +10,9 @@ var cardStyle = {
 
 export default function HiddenCard() {
     return (
-        <Card style={cardStyle}>
+        <Card variant="outlined" style={cardStyle}>
             <CardHeader/>
         </Card>
     );
 }
-
+// 나중에는 room 갯수에 따라 emptyCard 렌더할지 말지 정해줘야 함

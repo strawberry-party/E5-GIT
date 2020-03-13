@@ -8,7 +8,9 @@ import Header from './components/Header/Header';
 import { connect } from 'react-redux';
 import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
-import EmptyCard from './components/EmptyCard'
+import EmptyCard from './components/EmptyCard';
+import NoticeTab from './components/Tabs/NoticeTab/NoticeTab';
+
 class App extends Component {
   render() {
     return (

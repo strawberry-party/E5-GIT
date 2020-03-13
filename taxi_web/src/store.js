@@ -11,6 +11,11 @@ var initstate = {
     ],
     maxId : 1,
     myRooms : [],
+
+    notices: [
+        {id:1, title: '중요공지', desc:'카택전 v0.1 런칭'}
+    ]
+
 }
 
 function reducer(state=initstate, action){
