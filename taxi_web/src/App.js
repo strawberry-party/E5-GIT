@@ -10,20 +10,36 @@ import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
 import EmptyCard from './components/EmptyCard';
 import NoticeTab from './components/Tabs/NoticeTab/NoticeTab';
-import HeaderContainer from './components/Header/HeaderContainer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 class App extends Component {
   render() {
     return (
       <div>
-          <Header />
-          <EmptyCard />
-          <Route exact path="/"><RoomTab></RoomTab></Route>
-          <Route exact path="/create"><CreateRoom></CreateRoom></Route>
-          <Route exact path="/mytab"><MyTab></MyTab></Route>
-          <Route exact path="/profile"><Profile></Profile></Route>
-          <EmptyCard />
-          <Footer />
+        {/* <AppBar position="fixed">
+          <Toolbar>
+            <IconButton edge="start" color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6">
+              News
+          </Typography>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar> */}
+        <Header />
+        <EmptyCard />
+        <Route exact path="/"><RoomTab></RoomTab></Route>
+        <Route exact path="/create"><CreateRoom></CreateRoom></Route>
+        <Route exact path="/mytab"><MyTab></MyTab></Route>
+        <Route exact path="/profile"><Profile></Profile></Route>
+        <EmptyCard />
+        <Footer />
       </div>
     )
   }

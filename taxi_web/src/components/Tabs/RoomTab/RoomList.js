@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 
 class RoomList extends Component {
     render() {
@@ -11,9 +11,11 @@ class RoomList extends Component {
                 <Card>
                     <CardHeader title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
-                        <FlatButton label="참가" onClick = {function(){
+                        <Button onClick = {function(){
                             this.props.onClick('addMyRoom', room.id);
-                        }.bind(this)}/>
+                        }.bind(this)}>
+                            참가
+                        </Button>
                     </CardActions>
                     <CardText expandable={true}>추가정보</CardText>
                 </Card>
