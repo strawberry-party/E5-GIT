@@ -34,9 +34,6 @@ const useStyles = makeStyles(theme => ({
 
 function ElevationScroll(props) {
     const { children, window } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
     const trigger = useScrollTrigger({
         disableHysteresis: true,
         threshold: 0,
@@ -50,10 +47,6 @@ function ElevationScroll(props) {
 
 ElevationScroll.propTypes = {
     children: PropTypes.element.isRequired,
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
     window: PropTypes.func,
 };
 
@@ -66,45 +59,38 @@ function Header(props) {
     };
 
     return (
-        <React.Fragment>
-            <CssBaseline />
-            <ElevationScroll {...props}>
-                <div className={classes.root}>
-                    <AppBar position="sticky">
-                        <Toolbar>
-                            <Typography
-                                variant="h6"
-                                className={classes.title}
-                                noWrap
-                                component={NavLink} to='/'>
-                                카택전
+        <AppBar position="sticky">
+            <Toolbar>
+                <Typography
+                    variant="h6"
+                    className={classes.title}
+                    noWrap
+                    component={NavLink} to='/'>
+                    카택전
                             </Typography>
 
-                            <IconButton
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                onClick={handleMenu}
-                                color="inherit"
-                                component={NavLink} to='/profile'
-                                edge='end'>
-                                <AccountCircle />
-                            </IconButton>
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    onClick={handleMenu}
+                    color="inherit"
+                    component={NavLink} to='/profile'
+                    edge='end'>
+                    <AccountCircle />
+                </IconButton>
 
-                            <IconButton
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                onClick={handleMenu}
-                                color="inherit"
-                                component={NavLink} to='/notice'
-                                edge='end'
-                            >
-                                <NotificationsIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
-                </div>
-            </ElevationScroll>
-        </React.Fragment>
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    onClick={handleMenu}
+                    color="inherit"
+                    component={NavLink} to='/notice'
+                    edge='end'
+                >
+                    <NotificationsIcon />
+                </IconButton>
+            </Toolbar>
+        </AppBar>
     );
 }
 
