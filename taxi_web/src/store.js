@@ -8,9 +8,13 @@ var initstate = {
         { id: 4, writer: '태형', dep: '대전', dest: '우한' },
         { id: 5, writer: '태형', dep: '대전', dest: '우한' },
         { id: 6, writer: '태형', dep: '대전', dest: '우한' },
-
     ],
     maxId : 1,
+
+    notices: [
+        {id:1, title: '중요공지', desc:'카택전 v0.1 런칭'}
+    ]
+
 }
 
 function reducer(state=initstate, action){

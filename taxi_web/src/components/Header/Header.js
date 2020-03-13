@@ -10,8 +10,8 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -92,6 +92,17 @@ function Header(props) {
                                 edge='end'
                             >
                                 <AccountCircle />
+                            </IconButton>
+
+                            <IconButton
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                onClick={handleMenu}
+                                color="inherit"
+                                component={NavLink} to='/notice'
+                                edge='end'
+                            >
+                                <NotificationsIcon />
                             </IconButton>
                         </Toolbar>
                     </AppBar>
