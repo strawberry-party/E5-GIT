@@ -10,12 +10,13 @@ import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
 import EmptyCard from './components/EmptyCard';
 import NoticeTab from './components/Tabs/NoticeTab/NoticeTab';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Header />
+        <HeaderContainer />
         <EmptyCard />
         <Route exact path="/"><RoomTab></RoomTab></Route>
         <Route exact path="/create"><CreateRoom></CreateRoom></Route>
