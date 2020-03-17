@@ -11,7 +11,15 @@ class RoomList extends Component {
                 <Card>
                     <CardHeader title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
-                        <Button onClick = {function(){
+                        <Button button = {function(){
+                            console.log();
+                            
+                            if(room in this.props.myRooms) {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }.bind(this)} onClick = {function(){
                             this.props.onClick('addMyRoom', room.id);
                         }.bind(this)}>
                             참가
@@ -39,6 +47,7 @@ export default connect(
     function (state) {
         return {
             rooms: state.rooms,
+            myRooms: state.myRooms
         }
     },
     function (dispatch) {
