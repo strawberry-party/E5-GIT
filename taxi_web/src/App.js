@@ -22,17 +22,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <AppBar position="fixed">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6">
-              News
-          </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar> */}
         <Header />
         <EmptyCard />
         <Route exact path="/"><RoomTab></RoomTab></Route>

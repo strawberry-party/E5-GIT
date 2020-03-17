@@ -16,8 +16,13 @@ class RoomList extends Component {
                         }.bind(this)}>
                             참가
                         </Button>
+                        <Button onClick = {function(){
+                            this.props.onClick('deleteRoom', room.id);
+                        }.bind(this)}>
+                            방 삭제
+                        </Button>
                     </CardActions>
-                    <CardText expandable={true}>추가정보</CardText>
+                    <CardText expandable={true}>{room.desc}</CardText>
                 </Card>
             )
         }.bind(this));
