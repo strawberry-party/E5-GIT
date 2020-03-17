@@ -27,7 +27,7 @@ class CreateRoom extends Component {
                             if(desc === undefined){
                                 desc = '추가정보 없음';
                             }
-                            this.props.onClick('create_process', writer, dep, dest, desc);
+                            this.props.onClick('create', writer, dep, dest, desc);
                         } else {
                             window.alert('다시 입력하세요!');    
                         }

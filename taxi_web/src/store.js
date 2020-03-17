@@ -4,7 +4,10 @@ var rawInitState = {
     userId: "1000",
     mode: 'home',
     rooms: [
-        { id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음', userId: "1000" },
+        {
+            id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음',
+            joinedUsers: ["3000", "2000"]
+        },
     ],
     maxId: 1,
     notices: [
@@ -21,24 +24,36 @@ myRooms = rawInitState.rooms.filter(function (room) {
     return false;
 });
 
-var initstate = {...rawInitState, myRooms};
+var initstate = { ...rawInitState, myRooms };
 
 function reducer(state = initstate, action) {
     var newState, newMyRooms;
-    if (action.type === 'create_process') {
-        var room = {id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, userId: action.userId};
+    if (action.type === 'create') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
+        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId] };
         var newRooms = [...state.rooms, room];
-        var newMyRooms = [...state.myRooms, room ]
-        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms:newMyRooms };
+        var newMyRooms = [...state.myRooms, room]
+        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms: newMyRooms };
         return newState;
     }
 
     if (action.type === 'join') {
+        var userId = state.userId;
         var room = state.rooms[action.roomId - 1];
+
+        for (var i = 0; i < room.joinedUsers.length; i++) {
+            var currentUserId = room.joinedUsers[i];
+            if (currentUserId === userId) {
+                window.alert('이미 참여한 방입니다');
+                return state;
+            }
+        }
+        room.joinedUsers.push(userId);
+        console.log("joined", room, userId, room.joinedUsers);
+
         newMyRooms = [...state.myRooms, room];
-        newState = { ...state, myRooms: newMyRooms };
+        newState = { ...state, myRooms: newMyRooms};
         return newState;
     }
 
@@ -62,14 +77,28 @@ function reducer(state = initstate, action) {
     }
 
     if (action.type === 'quit') {
+        var userId = state.userId;
         var newMyRooms = [];
-        for(var i=0;i<state.myRooms.length;i++){
+        for (var i = 0; i < state.myRooms.length; i++) {
             var currentRoom = state.myRooms[i];
             var currentRoomId = currentRoom.id;
-            if(currentRoomId !== action.roomId){
-                newMyRooms.append(currentRoom);
+            if (currentRoomId !== action.roomId) {
+                newMyRooms.push(currentRoom);
             }
         }
+        var room = state.rooms[action.roomId-1];
+        
+        var newJoinedUsers = room.joinedUsers.filter(function(user){
+            if(user === userId){
+                return false;
+            }
+            return true;
+        })
+
+        room.joinedUsers = newJoinedUsers;
+        console.log("quit", room, userId, room.joinedUsers);
+
+
         newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
