@@ -37,8 +37,8 @@ export default connect(
     },
     function(dispatch){
         return{
-            onClick(type){
-                dispatch({type})
+            onClick(type, roomId){
+                dispatch({type, roomId})
             }
         }
     }
