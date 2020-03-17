@@ -24,16 +24,17 @@ myRooms = rawInitState.rooms.filter(function (room) {
     return false;
 });
 
-var initstate = { ...rawInitState, myRooms };
+var initState = { ...rawInitState, myRooms };
 
-function reducer(state = initstate, action) {
+function reducer(state = initState, action) {
     var newState, newMyRooms;
     if (action.type === 'create') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
-        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum:Number(action.mnum) };
+        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum:action.maxNum };
+        console.log(room);
         var newRooms = [...state.rooms, room];
-        var newMyRooms = [...state.myRooms, room]
+        newMyRooms = [...state.myRooms, room]
         newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms: newMyRooms };
         return newState;
     }
@@ -102,7 +103,6 @@ function reducer(state = initstate, action) {
 
 
         newState = { ...state, myRooms: newMyRooms };
-        newState.rooms.num=newState.rooms.num-1
         return newState;
     }
     return state;
