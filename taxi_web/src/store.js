@@ -41,7 +41,7 @@ function reducer(state = initstate, action) {
     if (action.type === 'join') {
         var userId = state.userId;
         var room = state.rooms[action.roomId - 1];
-        if(room.joinedUsers.length<room.maxNum){
+        if(room.joinedUsers.length===room.maxNum){
             alert("정원이 다 찼습니다.")
             return state;}
         for (var i = 0; i < room.joinedUsers.length; i++) {

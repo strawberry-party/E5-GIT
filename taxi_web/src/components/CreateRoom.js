@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 class CreateRoom extends Component {
     render() {
-        var writer, dep, dest, mnum;
+        var writer, dep, dest, mnum, desc;
         return (
             <MuiThemeProvider>
                 <TextField floatingLabelText="작성자" onChange={function (e, text) {
@@ -17,6 +17,9 @@ class CreateRoom extends Component {
                 }} /><br />
                 <TextField floatingLabelText="목적지" onChange={function (e, text) {
                     dest = text
+                }} /><br />
+                <TextField floatingLabelText="추가정보" onChange={function (e, text) {
+                    desc = text
                 }} /><br />
                 <TextField floatingLabelText="최대인원" onChange={function (e, text) {
                     mnum = text

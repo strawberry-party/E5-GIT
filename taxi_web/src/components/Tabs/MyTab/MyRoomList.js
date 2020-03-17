@@ -10,7 +10,7 @@ class MyRoomList extends Component {
             return (
                 <Card>
                     <CardHeader title={"출발지: " + myRoom.dep + " 목적지: " + myRoom.dest} 
-                    subtitle={"작성자: " + myRoom.writer+ " 현재인원: "+myRoom.num+"/"+myRoom.maxnum} actAsExpander={true} showExpandableButton={true} />
+                    subtitle={"작성자: " + myRoom.writer+ " 현재 인원: "+myRoom.joinedUsers.length+"/"+myRoom.maxNum} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
                         <Button onClick = {function(){
                             this.props.onClick('quit', myRoom.id);

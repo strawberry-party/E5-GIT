@@ -12,7 +12,7 @@ class RoomList extends Component {
                 <Card>
                     <CardHeader
                         title={"출발지: " + room.dep + " 목적지: " + room.dest} 
-                        subtitle={"작성자: " + room.writer+"현재 인원: "+room.num+"/"+room.maxnum} actAsExpander={true} showExpandableButton={true} />
+                        subtitle={"작성자: " + room.writer+" 현재 인원: "+room.joinedUsers.length+"/"+room.maxNum} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
 
 
