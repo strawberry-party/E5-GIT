@@ -1,4 +1,6 @@
+import React, { Component } from 'react';
 import { createStore } from 'redux';
+
 var initstate = {
     mode: 'home',
     rooms: [
@@ -9,7 +11,7 @@ var initstate = {
         { id: 5, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음' },
         { id: 6, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음' },
     ],
-    maxId: 1,
+    maxId: 6,
     myRooms: [],
     notices: [
         { id: 1, title: '중요공지', desc: '카택전 v0.1 런칭' }
@@ -32,11 +34,22 @@ function reducer(state = initstate, action) {
         newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
+    
     if (action.type === 'deleteRoom') {
-        var currentMaxId = state.rooms.length;
-        var newId = currentMaxId + 1;
-        var newRooms = [...state.rooms, { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc }];
-        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId };
+        newRooms = state.rooms.filter(function(room){
+            if(room.id === action.roomId){
+                return false;
+            }
+            return true;
+        });
+        var newMyRooms = state.myRooms.filter(function(myRoom){
+            if(myRoom.id === action.roomId){
+                return false;
+            }
+            return true;
+        });
+
+        newState = { ...state, rooms: newRooms, myRooms: newMyRooms };
         return newState;
     }
     if (action.type === 'deleteMyRoom') {
