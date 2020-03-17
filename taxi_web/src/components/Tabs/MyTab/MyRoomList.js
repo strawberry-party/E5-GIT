@@ -9,7 +9,8 @@ class MyRoomList extends Component {
         var myRoomList = this.props.myRooms.map(function (myRoom) {
             return (
                 <Card>
-                    <CardHeader title={"출발지: " + myRoom.dep + " 목적지: " + myRoom.dest} subtitle={"작성자: " + myRoom.writer} actAsExpander={true} showExpandableButton={true} />
+                    <CardHeader title={"출발지: " + myRoom.dep + " 목적지: " + myRoom.dest} 
+                    subtitle={"작성자: " + myRoom.writer+ " 현재인원: "+myRoom.num+"/"+myRoom.maxnum} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
                         <Button onClick = {function(){
                             this.props.onClick('quit', myRoom.id);

@@ -10,7 +10,8 @@ class RoomList extends Component {
             return (
                 <Card>
                     <CardHeader
-                        title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
+                        title={"출발지: " + room.dep + " 목적지: " + room.dest} 
+                        subtitle={"작성자: " + room.writer+"현재 인원: "+room.num+"/"+room.maxnum} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
                         <Button onClick={function () {
                             this.props.onClick('join', room.id);
