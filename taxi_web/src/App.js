@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
 import EmptyCard from './components/EmptyCard';
-import SetTing from './components/Tabs/SetTingTab/SetTingTab';
+import Setting from './components/Tabs/SettingTab/Setting';
 import NoticeTab from './components/Tabs/NoticeTab/NoticeTab';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -28,7 +28,7 @@ class App extends Component {
         <Route exact path="/create"><CreateRoom></CreateRoom></Route>
         <Route exact path="/mytab"><MyTab></MyTab></Route>
         <Route exact path="/profile"><Profile></Profile></Route>
-        <Route exact path="/SetTing"><SetTing></SetTing></Route>
+        <Route exact path="/settings"><Setting></Setting></Route>
         <EmptyCard />
         <Footer />
       </div>

@@ -9,15 +9,16 @@ class RoomList extends Component {
         var roomlist = this.props.rooms.map(function (room) {
             return (
                 <Card>
-                    <CardHeader title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
+                    <CardHeader
+                        title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
-                        <Button onClick = {function(){
-                            this.props.onClick('addMyRoom', room.id);
+                        <Button onClick={function () {
+                            this.props.onClick('join', room.id);
                         }.bind(this)}>
                             참가
                         </Button>
-                        <Button onClick = {function(){
-                            this.props.onClick('deleteRoom', room.id);
+                        <Button onClick={function () {
+                            this.props.onClick('delete', room.id);
                         }.bind(this)}>
                             방 삭제
                         </Button>
