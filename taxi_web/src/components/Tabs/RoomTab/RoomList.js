@@ -40,6 +40,7 @@ export default connect(
     function (state) {
         return {
             rooms: state.rooms,
+            myRooms: state.myRooms
         }
     },
     function (dispatch) {

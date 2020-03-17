@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { createStore } from 'redux';
 
 var rawInitState = {
@@ -25,7 +24,7 @@ myRooms = rawInitState.rooms.filter(function (room) {
 var initstate = {...rawInitState, myRooms};
 
 function reducer(state = initstate, action) {
-    var newState;
+    var newState, newMyRooms;
     if (action.type === 'create_process') {
         var room = {id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, userId: action.userId};
         var currentMaxId = state.rooms.length;
@@ -38,7 +37,7 @@ function reducer(state = initstate, action) {
 
     if (action.type === 'join') {
         var room = state.rooms[action.roomId - 1];
-        var newMyRooms = [...state.myRooms, room];
+        newMyRooms = [...state.myRooms, room];
         newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
