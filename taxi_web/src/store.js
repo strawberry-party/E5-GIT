@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { createStore } from 'redux';
 
 var initstate = {
@@ -20,7 +19,7 @@ var initstate = {
 }
 
 function reducer(state = initstate, action) {
-    var newState;
+    var newState, newMyRooms;
     if (action.type === 'create_process') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
@@ -30,7 +29,7 @@ function reducer(state = initstate, action) {
     }
     if (action.type === 'addMyRoom') {
         var room = state.rooms[action.roomId - 1];
-        var newMyRooms = [...state.myRooms, room];
+        newMyRooms = [...state.myRooms, room];
         newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
@@ -42,7 +41,7 @@ function reducer(state = initstate, action) {
             }
             return true;
         });
-        var newMyRooms = state.myRooms.filter(function(myRoom){
+        newMyRooms = state.myRooms.filter(function(myRoom){
             if(myRoom.id === action.roomId){
                 return false;
             }
@@ -53,10 +52,13 @@ function reducer(state = initstate, action) {
         return newState;
     }
     if (action.type === 'deleteMyRoom') {
-        var currentMaxId = state.rooms.length;
-        var newId = currentMaxId + 1;
-        var newRooms = [...state.rooms, { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc }];
-        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId };
+        newMyRooms = state.myRooms.filter(function(myRoom){
+            if(myRoom.id === action.roomId){
+                return false;
+            }
+            return true;
+        });
+        newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
     return state;
