@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import Profile from './components/Tabs/ProfileTab/ProfileTab';
 import CreateRoom from './components/CreateRoom';
 import EmptyCard from './components/EmptyCard';
+import SetTing from './components/Tabs/SetTingTab/SetTingTab';
 import NoticeTab from './components/Tabs/NoticeTab/NoticeTab';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,23 +22,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <AppBar position="fixed">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6">
-              News
-          </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar> */}
         <Header />
         <EmptyCard />
         <Route exact path="/"><RoomTab></RoomTab></Route>
         <Route exact path="/create"><CreateRoom></CreateRoom></Route>
         <Route exact path="/mytab"><MyTab></MyTab></Route>
         <Route exact path="/profile"><Profile></Profile></Route>
+        <Route exact path="/SetTing"><SetTing></SetTing></Route>
         <EmptyCard />
         <Footer />
       </div>

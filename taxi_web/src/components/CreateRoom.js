@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 class CreateRoom extends Component {
     render() {
-        var writer, dep, dest;
+        var writer, dep, dest, desc;
         return (
             <MuiThemeProvider>
                 <TextField floatingLabelText="작성자" onChange={function (e, text) {
@@ -18,10 +18,16 @@ class CreateRoom extends Component {
                 <TextField floatingLabelText="목적지" onChange={function (e, text) {
                     dest = text
                 }} /><br />
+                <TextField floatingLabelText="추가정보" onChange={function (e, text) {
+                    desc = text
+                }} /><br />
                 <NavLink exact to={'/'}>
                     <RaisedButton label="방 개설" onClick={function () {
                         if (writer !== undefined && dep !== undefined && dest !== undefined) {
-                            this.props.onClick('create_process', writer, dep, dest);
+                            if(desc === undefined){
+                                desc = '추가정보 없음';
+                            }
+                            this.props.onClick('create_process', writer, dep, dest, desc);
                         } else {
                             window.alert('다시 입력하세요!');    
                         }
@@ -36,8 +42,8 @@ export default connect(
     null,
     function (dispatch) {
         return {
-            onClick: function (mode, writer, dep, dest) {
-                dispatch({ type: mode, writer, dep, dest })
+            onClick: function (mode, writer, dep, dest, desc) {
+                dispatch({ type: mode, writer, dep, dest, desc })
             }
         }
     }

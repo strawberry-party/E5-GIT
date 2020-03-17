@@ -41,7 +41,7 @@ function Header() {
         <React.Fragment>
             <CssBaseline />
             <div className={classes.root}>
-                <AppBar position="fixed">
+                <AppBar position="relative">
                     <Toolbar>
                         <Typography
                             variant="h6"
