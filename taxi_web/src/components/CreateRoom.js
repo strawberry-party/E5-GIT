@@ -24,9 +24,12 @@ class CreateRoom extends Component {
                 <NavLink exact to={'/'}>
                     <RaisedButton label="방 개설" onClick={function () {
                         if (writer !== undefined && dep !== undefined && dest !== undefined &&mnum!==undefined) {
-                            this.props.onClick('create_process', writer, dep, dest,mnum);
+                            if(desc === undefined){
+                                desc = '추가정보 없음';
+                            }
+                            this.props.onClick('create', writer, dep, dest, desc);
                         } else {
-                            window.alert('다시 입력하세요!');    
+                            window.alert('다시 입력하세요!');
                         }
                     }.bind(this)} />
                 </NavLink>

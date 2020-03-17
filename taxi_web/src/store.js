@@ -4,7 +4,10 @@ var rawInitState = {
     userId: "1000",
     mode: 'home',
     rooms: [
-        { id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음', userId: "1000" ,num:1, maxnum:4},
+        {
+            id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음',
+            joinedUsers: ["3000", "2000"], maxNum:4
+        },
     ],
     maxId: 1,
     notices: [
@@ -21,30 +24,39 @@ myRooms = rawInitState.rooms.filter(function (room) {
     return false;
 });
 
-var initstate = {...rawInitState, myRooms};
+var initstate = { ...rawInitState, myRooms };
 
 function reducer(state = initstate, action) {
     var newState, newMyRooms;
-    if (action.type === 'create_process') {
+    if (action.type === 'create') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
-        var room = {id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, userId: action.userId, num:1, maxnum:Number(action.mnum)};
+        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum:Number(action.mnum) };
         var newRooms = [...state.rooms, room];
-        var newMyRooms = [...state.myRooms, room ]
-        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms:newMyRooms};
+        var newMyRooms = [...state.myRooms, room]
+        newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms: newMyRooms };
         return newState;
     }
 
     if (action.type === 'join') {
+        var userId = state.userId;
         var room = state.rooms[action.roomId - 1];
-        if(room.num<room.maxnum){
-            room.num=room.num+1;
-            newMyRooms = [...state.myRooms, room];
-            newState = { ...state, myRooms: newMyRooms };
-            return newState;}
-        else{
+        if(room.joinedUsers.length<room.maxNum){
             alert("정원이 다 찼습니다.")
+            return state;}
+        for (var i = 0; i < room.joinedUsers.length; i++) {
+            var currentUserId = room.joinedUsers[i];
+            if (currentUserId === userId) {
+                window.alert('이미 참여한 방입니다');
+                return state;
+            }
         }
+        room.joinedUsers.push(userId);
+        console.log("joined", room, userId, room.joinedUsers);
+
+        newMyRooms = [...state.myRooms, room];
+        newState = { ...state, myRooms: newMyRooms};
+        return newState;
     }
 
     if (action.type === 'delete') {
@@ -67,14 +79,28 @@ function reducer(state = initstate, action) {
     }
 
     if (action.type === 'quit') {
+        var userId = state.userId;
         var newMyRooms = [];
-        for(var i=0;i<state.myRooms.length;i++){
+        for (var i = 0; i < state.myRooms.length; i++) {
             var currentRoom = state.myRooms[i];
             var currentRoomId = currentRoom.id;
-            if(currentRoomId !== action.roomId){
-                newMyRooms.append(currentRoom);
+            if (currentRoomId !== action.roomId) {
+                newMyRooms.push(currentRoom);
             }
         }
+        var room = state.rooms[action.roomId-1];
+
+        var newJoinedUsers = room.joinedUsers.filter(function(user){
+            if(user === userId){
+                return false;
+            }
+            return true;
+        })
+
+        room.joinedUsers = newJoinedUsers;
+        console.log("quit", room, userId, room.joinedUsers);
+
+
         newState = { ...state, myRooms: newMyRooms };
         newState.rooms.num=newState.rooms.num-1
         return newState;
