@@ -49,14 +49,14 @@ function Header() {
                             noWrap
                             component={NavLink} to='/'>
                             카택전
-                </Typography>
+                        </Typography>
 
                         <IconButton
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             onClick={handleMenu}
                             color="inherit"
-                            component={NavLink} to='/profile'
+                            component={NavLink} to='/'
                             edge='end'
                         >
                             <AccountCircle />
