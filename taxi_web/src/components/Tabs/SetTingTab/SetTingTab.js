@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SettingTab extends Component {
+class SetTingTab extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class SettingTab extends Component {
     }
 }
 
-export default SettingTab;
+export default SetTingTab;

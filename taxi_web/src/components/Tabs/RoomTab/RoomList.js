@@ -4,27 +4,20 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import Button from '@material-ui/core/Button';
 
-
 class RoomList extends Component {
     render() {
         var roomlist = this.props.rooms.map(function (room) {
             return (
                 <Card>
-                    <CardHeader
-                        title={"출발지: " + room.dep + " 목적지: " + room.dest} 
-                        subtitle={"작성자: " + room.writer+" 현재 인원: "+room.joinedUsers.length+"/"+room.maxNum} actAsExpander={true} showExpandableButton={true} />
+                    <CardHeader title={"출발지: " + room.dep + " 목적지: " + room.dest} subtitle={"작성자: " + room.writer} actAsExpander={true} showExpandableButton={true} />
                     <CardActions>
-
-
-                        <Button  onClick={function () {
-                            this.props.onClick('join', room.id);
+                        <Button disabled = {this.props.myRooms.indexOf(room) > -1 ? true : false} onClick = {function(){
+                            this.props.onClick('addMyRoom', room.id);
                         }.bind(this)}>
                             참가
                         </Button>
-
-
-                        <Button onClick={function () {
-                            this.props.onClick('delete', room.id);
+                        <Button onClick = {function(){
+                            this.props.onClick('deleteRoom', room.id);
                         }.bind(this)}>
                             방 삭제
                         </Button>
@@ -46,8 +39,7 @@ export default connect(
     function (state) {
         return {
             rooms: state.rooms,
-            myRooms: state.myRooms,
-            userId: state.userId
+            myRooms: state.myRooms
         }
     },
     function (dispatch) {

@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 
 class CreateRoom extends Component {
     render() {
-        var writer, dep, dest, maxNum, desc;
+        var writer, dep, dest, desc;
         return (
             <MuiThemeProvider>
                 <TextField floatingLabelText="작성자" onChange={function (e, text) {
@@ -21,19 +21,15 @@ class CreateRoom extends Component {
                 <TextField floatingLabelText="추가정보" onChange={function (e, text) {
                     desc = text
                 }} /><br />
-                <TextField floatingLabelText="최대인원" onChange={function (e, text) {
-                    maxNum = Number(text)
-                }} /><br />
                 <NavLink exact to={'/'}>
                     <RaisedButton label="방 개설" onClick={function () {
-                        if (writer !== undefined && dep !== undefined && dest !== undefined && maxNum !== undefined) {
-                            if (desc === undefined) {
+                        if (writer !== undefined && dep !== undefined && dest !== undefined) {
+                            if(desc === undefined){
                                 desc = '추가정보 없음';
                             }
-                            console.log("maxNum:", maxNum);
-                            this.props.onClick('create', writer, dep, dest, desc, maxNum);
+                            this.props.onClick('create_process', writer, dep, dest, desc);
                         } else {
-                            window.alert('다시 입력하세요!');
+                            window.alert('다시 입력하세요!');    
                         }
                     }.bind(this)} />
                 </NavLink>
@@ -46,8 +42,8 @@ export default connect(
     null,
     function (dispatch) {
         return {
-            onClick: function (mode, writer, dep, dest, desc, maxNum) {
-                dispatch({ type: mode, writer, dep, dest, desc, maxNum })
+            onClick: function (mode, writer, dep, dest, desc) {
+                dispatch({ type: mode, writer, dep, dest, desc })
             }
         }
     }
