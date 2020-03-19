@@ -45,7 +45,7 @@ export default function Footer() {
 
             <BottomNavigationAction
                 component={NavLink}
-                to="/SetTing"
+                to="/settings"
                 label="설정"
                 value="settings"
                 icon={<SettingsIcon />}
