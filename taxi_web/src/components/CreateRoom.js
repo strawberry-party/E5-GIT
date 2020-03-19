@@ -26,11 +26,11 @@ class CreateRoom extends Component {
                 }} /><br />
                 <NavLink exact to={'/'}>
                     <RaisedButton label="방 개설" onClick={function () {
-                        if (writer !== undefined && dep !== undefined && dest !== undefined && maxNum !== undefined) {
+                        console.log("maxNum:", maxNum);
+                        if (writer !== undefined && dep !== undefined && dest !== undefined && maxNum !== undefined && !isNaN(maxNum)) {
                             if (desc === undefined) {
                                 desc = '추가정보 없음';
                             }
-                            console.log("maxNum:", maxNum);
                             this.props.onClick('create', writer, dep, dest, desc, maxNum);
                         } else {
                             window.alert('다시 입력하세요!');
