@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-var initstate = {
+var rawInitState = {
     mode: 'home',
     rooms: [
         { id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음' },
@@ -32,7 +32,7 @@ function reducer(state = initstate, action) {
     if (action.type === 'create') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
-        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum:Number(action.mnum) };
+        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum: Number(action.mnum) };
         var newRooms = [...state.rooms, room];
         var newMyRooms = [...state.myRooms, room]
         newState = { ...state, mode: 'home', rooms: newRooms, maxId: newId, myRooms: newMyRooms };
@@ -42,9 +42,10 @@ function reducer(state = initstate, action) {
     if (action.type === 'join') {
         var userId = state.userId;
         var room = state.rooms[action.roomId - 1];
-        if(room.joinedUsers.length===room.maxNum){
+        if (room.joinedUsers.length === room.maxNum) {
             alert("정원이 다 찼습니다.")
-            return state;}
+            return state;
+        }
         for (var i = 0; i < room.joinedUsers.length; i++) {
             var currentUserId = room.joinedUsers[i];
             if (currentUserId === userId) {
@@ -56,7 +57,7 @@ function reducer(state = initstate, action) {
         console.log("joined", room, userId, room.joinedUsers);
 
         newMyRooms = [...state.myRooms, room];
-        newState = { ...state, myRooms: newMyRooms};
+        newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
 
@@ -66,10 +67,9 @@ function reducer(state = initstate, action) {
                 return false;
             }
             return true;
-        }
-        
+        })
         newState = { ...state, myRooms: newMyRooms };
-        newState.rooms.num=newState.rooms.num-1
+        newState.rooms.num = newState.rooms.num - 1
         return newState;
     }
     return state;
