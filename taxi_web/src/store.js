@@ -1,15 +1,17 @@
 import { createStore } from 'redux';
 
 var rawInitState = {
-    userId: "1000",
+    userId: "3000",
+    userName: "전승규",
+    userGender: "M",
+    userPhone: "01033333333",
+    userPW: "lorem12",
     mode: 'home',
     rooms: [
-        {
-            id: 1, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음',
-            joinedUsers: ["3000", "2000"], maxNum:4
-        },
+        { id: 2, writer: '태형', dep: '대전', dest: '우한', desc: '추가정보 없음', joinedUsers: ["2000", "3000"], maxNum: 4 },
+        { id: 3, writer: '신성철', dep: '카이스트', dest: '디지스트', desc: '전총장님 나가신다', joinedUsers: ["2000", "3000"], maxNum: 4},
     ],
-    maxId: 1,
+    maxId: 3,
     notices: [
         { id: 1, title: '중요공지', desc: '카택전 v0.1 런칭' }
     ]
@@ -31,7 +33,7 @@ function reducer(state = initState, action) {
     if (action.type === 'create') {
         var currentMaxId = state.rooms.length;
         var newId = currentMaxId + 1;
-        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum:action.maxNum };
+        var room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum: action.maxNum };
         console.log(room);
         var newRooms = [...state.rooms, room];
         newMyRooms = [...state.myRooms, room]
@@ -42,9 +44,10 @@ function reducer(state = initState, action) {
     if (action.type === 'join') {
         var userId = state.userId;
         var room = state.rooms[action.roomId - 1];
-        if(room.joinedUsers.length===room.maxNum){
+        if (room.joinedUsers.length === room.maxNum) {
             alert("정원이 다 찼습니다.")
-            return state;}
+            return state;
+        }
         for (var i = 0; i < room.joinedUsers.length; i++) {
             var currentUserId = room.joinedUsers[i];
             if (currentUserId === userId) {
@@ -56,7 +59,7 @@ function reducer(state = initState, action) {
         console.log("joined", room, userId, room.joinedUsers);
 
         newMyRooms = [...state.myRooms, room];
-        newState = { ...state, myRooms: newMyRooms};
+        newState = { ...state, myRooms: newMyRooms };
         return newState;
     }
 
@@ -89,10 +92,10 @@ function reducer(state = initState, action) {
                 newMyRooms.push(currentRoom);
             }
         }
-        var room = state.rooms[action.roomId-1];
+        var room = state.rooms[action.roomId - 1];
 
-        var newJoinedUsers = room.joinedUsers.filter(function(user){
-            if(user === userId){
+        var newJoinedUsers = room.joinedUsers.filter(function (user) {
+            if (user === userId) {
                 return false;
             }
             return true;
