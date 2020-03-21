@@ -28,7 +28,7 @@ var initState = { ...rawInitState, myRooms };
 function reducer(state = initState, action) {
     var newState, newRooms, newMyRooms, room;
     var userId = state.userId;
-    if (action.type === 'create') { //방 만들기
+    if (action.type === 'create') { //방 만들기 (mysql 과 연동 시 지워질 수 있음)
         var newId = state.maxId + 1;
         room = { id: newId, writer: action.writer, dep: action.dep, dest: action.dest, desc: action.desc, joinedUsers: [state.userId], maxNum: action.maxNum };
         // console.log(room);
@@ -38,7 +38,7 @@ function reducer(state = initState, action) {
         return newState;
     }
 
-    if (action.type === 'join') { //방에 참가
+    if (action.type === 'join') { //방에 참가 (mysql 과 연동 시 지워질 수 있음)
         room = state.rooms.filter(function(room){ //room: 참가하고자 하는 방 (참고로 배열)
             if(room.id === action.roomId){
                 return true;
@@ -65,7 +65,7 @@ function reducer(state = initState, action) {
         return newState;
     }
 
-    if (action.type === 'delete') {
+    if (action.type === 'delete') { //(mysql 과 연동 시 지워질 수 있음)
         newRooms = state.rooms.filter(function (room) { //방 삭제
             if (room.id === action.roomId) {
                 return false;
@@ -84,7 +84,7 @@ function reducer(state = initState, action) {
         return newState;
     }
 
-    if (action.type === 'quit') { //방 나가기
+    if (action.type === 'quit') { //방 나가기 (mysql 과 연동 시 지워질 수 있음)
         newMyRooms = state.myRooms.filter(function(myRoom){ 
             if (myRoom.id !== action.roomId) return true;
             else return false;
